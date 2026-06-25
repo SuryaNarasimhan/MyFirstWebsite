@@ -13,6 +13,24 @@ button{
     padding:10px 20px;
     font-size:18px;
 }
+#chatbox {
+  margin: 40px auto;
+  width: 300px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+}
+
+#messages {
+  min-height: 100px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 8px;
+  width: 180px;
+}
 </style>
 </head>
 
@@ -23,5 +41,35 @@ button{
     <button onclick="alert('Hello!')">
         Click Me
     </button>
+    <div id="chatbox">
+  <h2>Ask me about Surya</h2>
+
+  <div id="messages"></div>
+
+  <input id="userInput" placeholder="Ask something..." />
+  <button onclick="sendMessage()">Send</button>
+</div>
+<script>
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const messages = document.getElementById("messages");
+  const question = input.value.toLowerCase();
+
+  let answer = "I'm not sure yet, but I'm still learning!";
+
+  if (question.includes("name")) {
+    answer = "My name is Surya.";
+  } else if (question.includes("website")) {
+    answer = "I built this website using HTML, CSS, JavaScript, Git, and GitHub Pages.";
+  } else if (question.includes("hobby")) {
+    answer = "I enjoy building projects and learning new technology.";
+  }
+
+  messages.innerHTML += `<p><b>You:</b> ${input.value}</p>`;
+  messages.innerHTML += `<p><b>Bot:</b> ${answer}</p>`;
+
+  input.value = "";
+}
+</script>
 </body>
 </html>
